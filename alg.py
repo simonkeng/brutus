@@ -21,17 +21,20 @@ for i in range(iterations):
     if guess not in store.values():
 
         store[itr] = guess
-        print('New code found & added to store: ', colored(guess, 'green'))
+        print('New unique code found & saved: ', colored(guess, 'green'))
+        print('On iteration: ', itr)
 
     else:
-        print('Already in store: ', colored(guess, 'red'))
+        print('Code already found: ', colored(guess, 'red'))
+        print('On iteration: ', itr)
 
 
 
 final = set(store.values())
-print('Final store size: ', len(final))
+print('Final number of unique codes found: ', len(final))
 
-with open('store.txt', 'w') as f:
+with open('data.txt', 'w') as f:
+    f.write('Generated codes:\n')
     f.write(str(final))
-    f.write('\nSize of store:\n')
+    f.write('\nNumber of codes found:\n')
     f.write(str(len(final)))
