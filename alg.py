@@ -8,13 +8,13 @@ options = string.ascii_uppercase
 store = dict()
 itr = 0
 
-# 500,000,000 iterations
-iterations = 500000000
+# 100,000 iterations
+iterations = 300000
 
 for i in range(iterations):
 
     # k=3 for 3 letter codes
-    guess_list = random.choices(options, k=6)
+    guess_list = random.choices(options, k=3)
     guess = ''.join(guess_list)
     itr += 1
 

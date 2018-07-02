@@ -18,9 +18,11 @@ For example:
 # alphabetical uppercase
 options = string.ascii_uppercase
 
-# give it extra time to find them all, 17 thousand possible
-# so 30 thousand should be enough.
-iterations = 30000
+# to give random.choices() extra time to find 
+# all 17 thousand possible codes (through trail & error)
+# i've found that 300 thousand is necessary
+# to reproducibly find them all.
+iterations = 300000
 
 # alphabetical uppercase
 options = string.ascii_uppercase
