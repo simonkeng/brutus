@@ -1,19 +1,43 @@
 import string
 import random
 from termcolor import colored
+import time
 
-# 823,543
+### -->  PARAMS  <-- ###
 
-options = "SUNIOUS"
+options = "RACWL"
+
+k_value = 5
+
+### ---------------- ###
+
+### param parsing
+
+opt_val = len(options)
+k_val = k_value
+posibles = opt_val ** k_val
+iterations = round(posibles + (posibles / 2))
+
+### TUI intro
+
+print(colored('Brutus initialized..', 'yellow'))
+time.sleep(1)
+print('Calculated iterations needed with inflation:')
+print(opt_val, '**', k_val, '=', iterations, 'noninflated:', posibles)
+print(colored('Brutus ready..', 'cyan'))
+time.sleep(4)
+
+
+
+### -->  MAIN  <-- ###
+
 
 store = dict()
 itr = 0
 
-iterations = 900000
-
 for i in range(iterations):
 
-    guess_list = random.choices(options, k=7)
+    guess_list = random.choices(options, k=k_value)
     guess = ''.join(guess_list)
     itr += 1
 
@@ -27,14 +51,11 @@ for i in range(iterations):
         print('Code already found: ', colored(guess, 'red'))
         print('On iteration: ', itr)
 
-    
-    if iterations == 200000:
-        with open('200k-check.txt', 'w') as f:
-            fin = set(store.values())
-            f.write(str(fin))
+
 
 final = set(store.values())
 print('Final number of unique codes found: ', len(final))
+
 
 with open('data.txt', 'w') as f:
     f.write('Generated codes:\n')
@@ -42,3 +63,5 @@ with open('data.txt', 'w') as f:
     f.write('\nNumber of codes found:\n')
     f.write(str(len(final)))
 
+
+### ---------------- ###
