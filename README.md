@@ -24,9 +24,6 @@ options = string.ascii_uppercase
 # to reproducibly find them all.
 iterations = 300000
 
-# alphabetical uppercase
-options = string.ascii_uppercase
-
 # then set k to 3
 random.choices(options, k=3)
 
