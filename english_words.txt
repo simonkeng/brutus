@@ -1,1 +1,0 @@
-['CALLA', 'ACCRA', 'CRAWL', 'CLARA', 'CARLA']

@@ -15,8 +15,8 @@ k_value = 5
 
 opt_val = len(options)
 k_val = k_value
-posibles = opt_val ** k_val
-iterations = round(posibles + (posibles / 2))
+combos = opt_val ** k_val
+iterations = round(combos + (posibles / 2))
 
 ### TUI intro
 
