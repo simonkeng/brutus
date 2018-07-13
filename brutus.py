@@ -1,26 +1,24 @@
-import os
-import time
+import os, sys, time
 import string
 import random
 import enchant
 from termcolor import colored
 
 
-def build(options, k_value):
+def build(options, k_value, iterations):
 
     ### param parsing & calculating
 
     opt_val = len(options)
     k_val = k_value
     combos = opt_val ** k_val
-    iterations = round(combos + (combos / 2))
 
     ### info text
 
     print(colored('Brutus initialized..', 'yellow'))
     time.sleep(1)
-    print('Calculated iterations needed with inflation:')
-    print(opt_val, '**', k_val, '=', iterations, 'noninflated:', combos)
+    print('Calculated number of iterations needed:')
+    print(opt_val, '**', k_val, '=', combos)
     time.sleep(1)
     print(colored('Brutus ready..', 'cyan'))
     time.sleep(4)
@@ -50,10 +48,11 @@ def build(options, k_value):
 
     final = set(store.values())
     print('Final number of unique codes found: ', len(final))
-
+    print(colored('Writing results to data.txt', 'yellow'))
 
     with open('data.txt', 'w') as f:
         f.write(str(final))
+
 
 
 def munge(input_file):
@@ -85,14 +84,14 @@ def munge(input_file):
 
 
 
-
 if __name__ == "__main__":
-    build("LYEST", 3)
+    build("LYEST", 3, 3000)
 
-    if 'data.txt' in os.listdir(os.getcwd()):
-        munge('data.txt')
+    try:
+        if 'data.txt' in os.listdir(os.getcwd()) and sys.argv[1] == '--wordscape':
+            munge('data.txt')
 
-
-
+    except IndexError:
+        sys.exit()
 
 
