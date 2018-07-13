@@ -85,7 +85,7 @@ def munge(input_file):
 
 
 if __name__ == "__main__":
-    build("LYEST", 3, 3000)
+    build("ABCDEF", 6, 180000)
 
     try:
         if 'data.txt' in os.listdir(os.getcwd()) and sys.argv[1] == '--wordscape':
