@@ -1,31 +1,19 @@
 # Brutus
 
-Multi-character code generator in Python 3.6
+Horribly inefficient multi-character code generator in pure unadulterated Python.
 
 1. Install termcolor: `pip install termcolor`
 
 2. `git clone https://github.com/simonkeng/brutus.git`
 
-3. Tune `options`, `iterations`, and `k` to generate your desired code. 
+3. Tune `options`, `k_value`, and `iterations` to generate your desired code.
 
-For example:
+For example, in a 6 character code, all uppercase alphabetical no numbers. The possibilities are 6 options raised to the number of characters in the code, `6 ** 6 = 46656` possible unique combinations. Through some test runs you can tune `iterations` to be large enough for `random.choices()` to find all the unique codes.
 
 ```python
-# for a 3 letter code, ascii uppercase, alphabetical
-# 26 letters in the alphabet, 3 letters per code
-# 26^3 = 17,576 possibilities
 
-# alphabetical uppercase
-options = string.ascii_uppercase
-
-# to give random.choices() extra time to find 
-# all 17 thousand possible codes (through trail & error)
-# i've found that 300 thousand is necessary
-# to reproducibly find them all.
-iterations = 300000
-
-# then set k to 3
-random.choices(options, k=3)
+if __name__ == "__main__":
+   build("ABCDEF", 6, 180000)
 
 ```
 
