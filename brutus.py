@@ -69,7 +69,6 @@ def munge(input_file):
     eng_words = list()
 
     with open('data.pkl', 'rb') as f:
-
         code_list = pickle.load(f)
 
         for code in code_list:
@@ -83,7 +82,6 @@ def munge(input_file):
 
     with open('results.txt', 'w') as g:
         g.write(str(eng_words))
-
 
 
 if __name__ == "__main__":
