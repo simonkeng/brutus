@@ -1,1 +1,1 @@
-['YES', 'SSE', 'TEL', 'TYE', 'TEE', 'YET', 'EYE', 'EEL', 'SEE', 'LYE', 'LET', 'TTL', 'SET', 'ESL', 'STE', 'EST', 'ELL', 'ELY', 'ESE', 'SST', 'ELS', 'SYS', 'STY', 'TTY', 'SLY', 'SSS', 'LES', 'LEE']
+['BAA', 'ADA', 'DAD', 'BAB', 'DAB', 'BAD', 'ADD', 'BBB', 'AAA']
