@@ -1,11 +1,12 @@
 import os, sys, time
 import string
 import random
+import pickle
 import enchant
 from termcolor import colored
 
 
-def build(options, k_value, iterations):
+def build(options, k_value):
 
     ### param parsing & calculating
 
@@ -25,18 +26,18 @@ def build(options, k_value, iterations):
 
     ### -->  MAIN  <-- ###
 
-    store = dict()
+    store = list()
     itr = 0
 
-    for i in range(iterations):
+    while True:
 
         guess_list = random.choices(options, k=k_value)
         guess = ''.join(guess_list)
-        itr += 1
 
-        if guess not in store.values():
+        if guess not in store:
 
-            store[itr] = guess
+            store.append(guess)
+            itr += 1
             print('New unique code found & saved: ', colored(guess, 'green'))
             print('On iteration: ', itr)
 
@@ -45,14 +46,21 @@ def build(options, k_value, iterations):
             print('On iteration: ', itr)
 
 
+        if len(store) == len(options) ** k_value:
 
-    final = set(store.values())
-    print('Final number of unique codes found: ', len(final))
-    print(colored('Writing results to data.txt', 'yellow'))
+            print('Final number of unique codes found: ', len(store))
+            print(colored('Writing results to data.txt', 'yellow'))
 
-    with open('data.txt', 'w') as f:
-        f.write(str(final))
 
+            with open('data.pkl', 'wb') as f:
+                pickle.dump(store, f)
+
+            # write out human readable version
+            with open('data.txt', 'w') as g:
+                g.write(str(store))
+                g.write(str(len(store)))
+
+            break
 
 
 def munge(input_file):
@@ -60,24 +68,17 @@ def munge(input_file):
     dictionary = enchant.Dict("en_US")
     eng_words = list()
 
-    with open(input_file, 'r') as f:
+    with open('data.pkl', 'rb') as f:
+        code_list = pickle.load(f)
 
-        raw_str = f.read()
-        inter_str = raw_str.split('{')[1]
-        data_list = inter_str.split('}')[0].split(',')
+        for code in code_list:
 
-        for word in data_list:
-            word = word.lstrip()
-            word = word.lstrip("'")
-            word = word.rstrip("'")
-
-            if dictionary.check(word):
-                print('English word found! ', colored(word, 'green'))
-                eng_words.append(word)
+            if dictionary.check(code):
+                print('English code found! ', colored(code, 'green'))
+                eng_words.append(code)
 
             else:
-                print('Not an english word: ', colored(word, 'red'))
-
+                print('Not an english word: ', colored(code, 'red'))
 
     with open('results.txt', 'w') as g:
         g.write(str(eng_words))
@@ -85,12 +86,11 @@ def munge(input_file):
 
 
 if __name__ == "__main__":
-    build("ABCDEF", 6, 180000)
+    build("12345", 5)
 
     try:
         if 'data.txt' in os.listdir(os.getcwd()) and sys.argv[1] == '--wordscape':
             munge('data.txt')
-
     except IndexError:
         sys.exit()
 
