@@ -6,7 +6,7 @@ import enchant
 from termcolor import colored
 
 
-def build(options, k_value):
+def generate(options, k_value):
 
     ### param parsing & calculating
 
@@ -86,7 +86,7 @@ def munge(input_file):
 
 
 if __name__ == "__main__":
-    build("12345", 5)
+    generate("12345", 5)
 
     try:
         if 'data.txt' in os.listdir(os.getcwd()) and sys.argv[1] == '--wordscape':

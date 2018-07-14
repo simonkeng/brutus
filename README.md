@@ -8,13 +8,14 @@ Multi-character code generator in pure unadulterated Python.
 
 3. Tune `options`, `k_value`, and `iterations` to generate your desired code.
 
-For example, if you wanted a 6 character code, all uppercase, containing only the letters `A` through `F`, no numbers. The possibilities are 6 options raised to the number of characters in the code, `6 ** 6 = 46656` possible unique combinations. Through some test runs you can tune `iterations` to be large enough for `random.choices()` to find all the unique codes.
+For example, if you wanted a 6 character code, all uppercase, containing only the letters `A` through `F`, no numbers. The possibilities are 6 options raised to the number of characters in the code, `6 ** 6 = 46656` possible unique combinations. All the combinations will be written to `data.txt`, for readability but will also be saved as binaries (`data.pkl`). If you run the script with `--wordscape` (`python brutus.py --wordscape`) then those binaries will be read back into memroy and sanitized though the english dictionary ([pyenchant](https://github.com/rfk/pyenchant)) to collect any english words found in your list of generated codes. 
 
 
 ```python
-def build(options, k_value, iterations):
+def generate(options, k_value):
     # algorithm
     return 'data.txt'
+    return ''
 
 # with --wordscape the output from
 # build() will be parsed by the
@@ -24,7 +25,7 @@ def build(options, k_value, iterations):
 
 
 if __name__ == "__main__":
-   build("ABCDEF", 6, 180000)
+    generate("ABCDEF", 6, 180000)
 
 ```
 
