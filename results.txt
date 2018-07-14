@@ -1,1 +1,1 @@
-['SST', 'TTY', 'EEL', 'ELS', 'SEE', 'LYE', 'SET', 'ESE', 'SYS', 'SLY', 'ESL', 'TEE', 'LEE', 'STY', 'YET', 'LES', 'ELL', 'TTL']
+['YES', 'SSE', 'TEL', 'TYE', 'TEE', 'YET', 'EYE', 'EEL', 'SEE', 'LYE', 'LET', 'TTL', 'SET', 'ESL', 'STE', 'EST', 'ELL', 'ELY', 'ESE', 'SST', 'ELS', 'SYS', 'STY', 'TTY', 'SLY', 'SSS', 'LES', 'LEE']
