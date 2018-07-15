@@ -39,11 +39,11 @@ def generate(options, k_value):
             store.append(guess)
             itr += 1
             print('New unique code found & saved: ', colored(guess, 'green'))
-            print('On iteration: ', itr)
+            print('Unique codes found: ', itr)
 
         else:
             print('Code already found: ', colored(guess, 'red'))
-            print('On iteration: ', itr)
+            print('Unique codes found: ', itr)
 
 
         if len(store) == len(options) ** k_value:
@@ -67,7 +67,8 @@ def munge(input_file):
 
     dictionary = enchant.Dict("en_US")
     eng_words = list()
-with open(input_file, 'rb') as f:
+
+    with open(input_file, 'rb') as f:
         code_list = pickle.load(f)
 
         for code in code_list:
@@ -84,7 +85,7 @@ with open(input_file, 'rb') as f:
 
 
 if __name__ == "__main__":
-    generate('ABCDEFGHIJKLMNOPQRSTUVWXYZ', 6)
+    generate('ABCD', 7)
 
     try:
         if 'data.txt' in os.listdir(os.getcwd()) and sys.argv[1] == '--wordscape':
