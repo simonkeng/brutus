@@ -39,24 +39,24 @@ def generate(options, k_value):
             store.append(guess)
             itr += 1
             print('New unique code found & saved: ', colored(guess, 'green'))
-            print('On iteration: ', itr)
+            print('Unique codes found: ', itr)
 
         else:
             print('Code already found: ', colored(guess, 'red'))
-            print('On iteration: ', itr)
+            print('Unique codes found: ', itr)
 
 
         if len(store) == len(options) ** k_value:
 
             print('Final number of unique codes found: ', len(store))
-            print(colored('Writing results to data.txt', 'yellow'))
+            print(colored('Writing results to data.txt & pickle file.', 'yellow'))
 
 
-            with open('data.pkl', 'wb') as f:
+            with open('tests/data.pkl', 'wb') as f:
                 pickle.dump(store, f)
 
             # write out human readable version
-            with open('data.txt', 'w') as g:
+            with open('tests/data.txt', 'w') as g:
                 g.write(str(store))
                 g.write(str(len(store)))
 
@@ -68,7 +68,7 @@ def munge(input_file):
     dictionary = enchant.Dict("en_US")
     eng_words = list()
 
-    with open('data.pkl', 'rb') as f:
+    with open(input_file, 'rb') as f:
         code_list = pickle.load(f)
 
         for code in code_list:
@@ -80,16 +80,16 @@ def munge(input_file):
             else:
                 print('Not an english word: ', colored(code, 'red'))
 
-    with open('results.txt', 'w') as g:
+    with open('tests/results.txt', 'w') as g:
         g.write(str(eng_words))
 
 
 if __name__ == "__main__":
-    generate("12345", 5)
+    generate('ABCD', 7)
 
     try:
         if 'data.txt' in os.listdir(os.getcwd()) and sys.argv[1] == '--wordscape':
-            munge('data.txt')
+            munge('tests/data.pkl')
     except IndexError:
         sys.exit()
 

@@ -28,4 +28,4 @@ if __name__ == "__main__":
 
 **Disclaimer:** 
 In the first example, generating 308 million unique 6-char codes would take an insane
-amount of time on any average local machine. Generate at your own risk. 
+amount of time and power on any average local machine, and running this with `--wordscape` would, in theory, distill out every 6-letter word in the english dictionary. Please generate at your own risk. 
