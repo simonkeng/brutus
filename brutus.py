@@ -5,13 +5,18 @@ import pickle
 import enchant
 from termcolor import colored
 
+import numpy as np
 
-def generate(options, k_value):
+parts = ['jung', 'tang', 'wang', 'fang', 'ling', 'yuki',
+         'dong', 'kung', 'mura', 'wong', 'kong', 'kiki',
+         'nori', 'gung', 'ishi', 'chi', 'roe', 'son']
+
+def generate(options, size):
 
     ### param parsing & calculating
 
     opt_val = len(options)
-    k_val = k_value
+    k_val = size
     combos = opt_val ** k_val
 
     ### info text
@@ -22,7 +27,7 @@ def generate(options, k_value):
     print(opt_val, '**', k_val, '=', combos)
     time.sleep(1)
     print(colored('Brutus ready..', 'cyan'))
-    time.sleep(4)
+    time.sleep(3)
 
     ### -->  MAIN  <-- ###
 
@@ -31,7 +36,7 @@ def generate(options, k_value):
 
     while True:
 
-        guess_list = random.choices(options, k=k_value)
+        guess_list = np.random.choice(options, size=size)
         guess = ''.join(guess_list)
 
         if guess not in store:
@@ -46,14 +51,16 @@ def generate(options, k_value):
             print('Unique codes found: ', itr)
 
 
-        if len(store) == len(options) ** k_value:
+        if len(store) == len(options) ** size:
 
             print('Final number of unique codes found: ', len(store))
             print(colored('Writing results to data.txt & pickle file.', 'yellow'))
 
-
             with open('tests/data.pkl', 'wb') as f:
                 pickle.dump(store, f)
+
+            # sort alphabetical
+            # store = sorted(store)
 
             # write out human readable version
             with open('tests/data.txt', 'w') as g:
@@ -61,6 +68,7 @@ def generate(options, k_value):
                 g.write(str(len(store)))
 
             break
+
 
 
 def munge(input_file):
@@ -80,12 +88,13 @@ def munge(input_file):
             else:
                 print('Not an english word: ', colored(code, 'red'))
 
+
     with open('tests/results.txt', 'w') as g:
         g.write(str(eng_words))
 
 
 if __name__ == "__main__":
-    generate('ABCD', 7)
+    generate(parts, 2)
 
     try:
         if 'data.txt' in os.listdir(os.getcwd()) and sys.argv[1] == '--wordscape':
