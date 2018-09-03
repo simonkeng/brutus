@@ -1,9 +1,14 @@
 import os, sys, time
+import argparse
 import string
 import random
 import pickle
 import enchant
 from termcolor import colored
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument('options', help='Options as string')
 
 
 def generate(options, k_value):
