@@ -6,7 +6,7 @@ Multi-character code generator in pure unadulterated Python.
 
 2. `git clone https://github.com/simonkeng/brutus.git`
 
-3. Tune `options` and `k_value` to generate your desired code.
+3. Tune `options` and `k_value` to generate your desired codes.
 
 > options = what the code consists of (`'ABCD'`, `123456`,`['bob', 'ann', 'dan']`)
 
