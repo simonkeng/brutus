@@ -1,1 +1,0 @@
-['BAA', 'ADA', 'DAD', 'BAB', 'DAB', 'BAD', 'ADD', 'BBB', 'AAA']

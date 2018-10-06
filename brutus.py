@@ -6,9 +6,9 @@ import pickle
 import enchant
 from termcolor import colored
 
-parser = argparse.ArgumentParser()
+# parser = argparse.ArgumentParser()
 
-parser.add_argument('options', help='Options as string')
+# parser.add_argument('options', help='Options as string')
 
 
 def generate(options, k_value):
@@ -90,7 +90,7 @@ def munge(input_file):
 
 
 if __name__ == "__main__":
-    generate('ABCD', 7)
+    generate('ASEGHOPLM', 5)
 
     try:
         if 'data.txt' in os.listdir(os.getcwd()) and sys.argv[1] == '--wordscape':
